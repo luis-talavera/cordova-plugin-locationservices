@@ -26,6 +26,7 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.provider.Settings;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;
@@ -219,11 +220,25 @@ public class CordovaLocationServices extends CordovaPlugin implements
 
     public JSONObject returnLocationJSON(Location loc) {
         JSONObject o = new JSONObject();
-
+        
+        boolean mocked = false;
+        if (Build.VERSION.SDK_INT > 22) {
+            mocked = loc.isFromMockProvider();
+            Log.d(LocationUtils.APPTAG, "LA VERSION FUNCIONA CON EL METODO MOCK PROVIDER");
+        }else{
+            if (Settings.Secure.getString(cordova.getActivity().getApplicationContext().getContentResolver(), Settings.Secure.ALLOW_MOCK_LOCATION).equals("0")) {
+                mocked = false;
+                Log.d(LocationUtils.APPTAG, "LA VERSION FUNCIONA CON EL METODO ALLOW MOCK LOCATION");
+            }else{
+                mocked = true;    
+            }      
+        }
+        Log.d(LocationUtils.APPTAG, "La version del SDK ES "+Build.VERSION.SDK_INT+" y Es ubicacion falsa? "+mocked+ " DATO ACERCA SI ES FALSO MENOR A 18 "+Settings.Secure.getString(cordova.getActivity().getApplicationContext().getContentResolver(), Settings.Secure.ALLOW_MOCK_LOCATION).equals("0"));
         try {
             o.put("latitude", loc.getLatitude());
             o.put("longitude", loc.getLongitude());
             o.put("altitude", (loc.hasAltitude() ? loc.getAltitude() : null));
+            o.put("mock", mocked);
             o.put("accuracy", loc.getAccuracy());
             o.put("heading",
                     (loc.hasBearing() ? (loc.hasSpeed() ? loc.getBearing()
