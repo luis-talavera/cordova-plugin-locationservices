@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-locationservices.Coordinates", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -30,7 +31,7 @@
  * @param {Object} altacc
  * @constructor
  */
-var Coordinates = function(lat, lng, alt, acc, head, vel, altacc) {
+var Coordinates = function(lat, lng, alt, acc, head, vel, altacc, moc) {
   /**
    * The latitude of the position.
    */
@@ -64,6 +65,11 @@ var Coordinates = function(lat, lng, alt, acc, head, vel, altacc) {
    * The altitude accuracy of the position.
    */
   this.altitudeAccuracy = (altacc !== undefined) ? altacc : null;
+
+  this.mock = (moc !== undefined) ? moc : null;
+  
 };
 
 module.exports = Coordinates;
+
+});

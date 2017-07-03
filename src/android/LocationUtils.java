@@ -23,7 +23,7 @@ package fr.louisbl.cordova.locationservices;
 public final class LocationUtils {
 
     // Debugging tag for the application
-    public static final String APPTAG = "GPSTROVATOCISA";
+    public static final String APPTAG = "GPSMOCKLOCATIONSERVICES";
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult

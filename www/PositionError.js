@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-locationservices.PositionError", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -36,3 +37,5 @@ PositionError.POSITION_UNAVAILABLE = 2;
 PositionError.TIMEOUT = 3;
 
 module.exports = PositionError;
+
+});

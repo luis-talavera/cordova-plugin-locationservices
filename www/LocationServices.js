@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-locationservices.LocationServices", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -126,6 +127,7 @@ var LocationServicesWithoutPermission = {
         latitude: p.latitude,
         longitude: p.longitude,
         altitude: p.altitude,
+        mock: p.mock,
         accuracy: p.accuracy,
         heading: p.heading,
         velocity: p.velocity,
@@ -205,6 +207,7 @@ var LocationServicesWithoutPermission = {
         latitude: p.latitude,
         longitude: p.longitude,
         altitude: p.altitude,
+        mock: p.mock,
         accuracy: p.accuracy,
         heading: p.heading,
         velocity: p.velocity,
@@ -271,3 +274,5 @@ LocationServicesWithoutPermission.priorities = {
 };
 
 module.exports = LocationServices;
+
+});

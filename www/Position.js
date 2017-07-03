@@ -1,3 +1,4 @@
+cordova.define("cordova-plugin-locationservices.Position", function(require, exports, module) {
 /*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -23,7 +24,7 @@ var Coordinates = require('./Coordinates');
 
 var Position = function(coords, timestamp) {
   if (coords) {
-    this.coords = new Coordinates(coords.latitude, coords.longitude, coords.altitude, coords.accuracy, coords.heading, coords.velocity, coords.altitudeAccuracy);
+    this.coords = new Coordinates(coords.latitude, coords.longitude, coords.altitude, coords.accuracy, coords.heading, coords.velocity, coords.altitudeAccuracy, coords.mock);
   } else {
     this.coords = new Coordinates();
   }
@@ -31,3 +32,5 @@ var Position = function(coords, timestamp) {
 };
 
 module.exports = Position;
+
+});
